@@ -9,6 +9,11 @@ cmd_init() {
     require_cmd git
     require_cmd yq
 
+    if chezmoi_run source-path >/dev/null 2>&1; then
+        log_warn "chezmoi already initialized. aborting."
+        exit 1
+    fi
+
     local _cmd="$1"
     local repo
     repo=$(get_config '.repo')
