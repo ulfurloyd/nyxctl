@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# shellcheck source=lib/log.sh
+source "$SCRIPT_DIR/lib/log.sh"
+source "$SCRIPT_DIR/lib/util.sh"
+source "$SCRIPT_DIR/lib/chezmoi.sh"
+
+main() {
+    case "${1:-}" in
+        init) cmd_init "$@";;
+        apply) cmd_apply ;;
+        diff) cmd_diff ;;
+        doctor) cmd_doctor ;;
+        *)
+            log_error "Usage: nyxctl {init|apply|diff|docker}"
+            exit 1
+            ;;
+        esac
+}
+
+main "$@"
