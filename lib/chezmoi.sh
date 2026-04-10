@@ -7,16 +7,16 @@ chezmoi_run() {
 cmd_init() {
     require_cmd "$CHEZMOI_BIN"
     require_cmd git
+    require_cmd yq
 
     local _cmd="$1"
-    local repo="${2:-}"
+    local repo
+    repo=$(get_config '.repo')
 
-    if [[ -z "$repo" ]]; then
+    if [[ -z "$repo" || "$repo" == "null" ]]; then
         log_error "Usage: nyxctl init <repo-url>"
         exit 1
     fi
-
-    local repo="$2"
 
     log_info "Initializing chezmoi with repo: $repo"
     chezmoi_run init "$repo"

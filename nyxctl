@@ -10,15 +10,12 @@ source "$SCRIPT_DIR/lib/util.sh"
 source "$SCRIPT_DIR/lib/chezmoi.sh"
 source "$SCRIPT_DIR/lib/config.sh"
 
-REPO=$(get_config '.repo')
-
 main() {
     case "${1:-}" in
         init) cmd_init "$@";;
         apply) cmd_apply ;;
         diff) cmd_diff ;;
         doctor) cmd_doctor ;;
-        repo) echo "$REPO" ;;
         *)
             log_error "Usage: nyxctl {init|apply|diff|docker}"
             exit 1
