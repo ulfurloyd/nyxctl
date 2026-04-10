@@ -46,6 +46,13 @@ cmd_diff() {
     chezmoi_run diff
 }
 
+cmd_status() {
+    require_cmd "$CHEZMOI_BIN"
+
+    log_info "Showing status..."
+    chezmoi_run status
+}
+
 cmd_doctor() {
     log_info "Running diagnostics..."
 

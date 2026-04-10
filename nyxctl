@@ -16,6 +16,7 @@ main() {
         init) cmd_init "$@";;
         apply) cmd_apply ;;
         diff) cmd_diff ;;
+        status) cmd_status ;;
         doctor) cmd_doctor ;;
         *)
             log_error "Usage: nyxctl {init|apply|diff|doctor}"
