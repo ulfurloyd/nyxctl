@@ -9,6 +9,7 @@ source "$SCRIPT_DIR/lib/log.sh"
 source "$SCRIPT_DIR/lib/util.sh"
 source "$SCRIPT_DIR/lib/chezmoi.sh"
 source "$SCRIPT_DIR/lib/config.sh"
+source "$SCRIPT_DIR/lib/detect.sh"
 
 main() {
     case "${1:-}" in
@@ -17,7 +18,7 @@ main() {
         diff) cmd_diff ;;
         doctor) cmd_doctor ;;
         *)
-            log_error "Usage: nyxctl {init|apply|diff|docker}"
+            log_error "Usage: nyxctl {init|apply|diff|doctor}"
             exit 1
             ;;
         esac

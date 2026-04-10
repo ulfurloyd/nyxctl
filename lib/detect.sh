@@ -3,6 +3,8 @@ detect_hostname() {
 }
 
 detect_profile() {
+    [[ -f "$CONFIG_FILE" ]] || return 0
+
     local host
     host=$(detect_hostname)
 

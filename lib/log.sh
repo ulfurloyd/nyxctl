@@ -1,11 +1,11 @@
 log_info() {
-    echo "[INFO] $*"
+    printf "[INFO] %s\n" "$*"
 }
 
 log_warn() {
-    echo "[WARN] $*"
+    printf "[WARN] %s\n" "$*"
 }
 
 log_error() {
-    echo "[ERROR] $*" >&2
+    printf "[ERROR] %s\n" "$*" >&2
 }
